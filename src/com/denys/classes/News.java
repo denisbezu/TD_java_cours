@@ -82,30 +82,30 @@ public class News implements Comparable {
   }
 
 
-  public void show() {
-    System.out.println("Titre: " + this.title);
-    System.out.println("Date: " + this.date);
-    System.out.println("Author: " + this.author);
-    System.out.println("Source: " + this.source);
-  }
+//  public void show() {
+//    System.out.println("Titre: " + this.title);
+//    System.out.println("Date: " + this.date);
+//    System.out.println("Author: " + this.author);
+//    System.out.println("Source: " + this.source);
+//  }
 
-  public void enter() throws MalformedURLException {
-    Scanner scanner = new Scanner(System.in);
-
-    System.out.println("Enter a title: ");
-    this.title = scanner.nextLine();
-
-    System.out.println("Enter the date: ");
-    String date = scanner.nextLine();
-    this.date = LocalDate.parse(date);
-
-    System.out.println("Enter author: ");
-    this.author = scanner.nextLine();
-
-    System.out.println("Enter URL: ");
-    String url = scanner.nextLine();
-    this.source = new URL(url);
-  }
+//  public void enter() throws MalformedURLException {
+//    Scanner scanner = new Scanner(System.in);
+//
+//    System.out.println("Enter a title: ");
+//    this.title = scanner.nextLine();
+//
+//    System.out.println("Enter the date: ");
+//    String date = scanner.nextLine();
+//    this.date = LocalDate.parse(date);
+//
+//    System.out.println("Enter author: ");
+//    this.author = scanner.nextLine();
+//
+//    System.out.println("Enter URL: ");
+//    String url = scanner.nextLine();
+//    this.source = new URL(url);
+//  }
 
   /**
    * Information about current news
@@ -114,13 +114,11 @@ public class News implements Comparable {
    */
   @Override
   public String toString() {
-    StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.append("Titre: ").append(this.title).append("\n");
-    stringBuilder.append("Date: ").append(this.date).append("\n");
-    stringBuilder.append("Author: ").append(this.author).append("\n");
-    stringBuilder.append("Source: ").append(this.source).append("\n");
-
-    return stringBuilder.toString();
+    String newsString = "Titre: " + this.title + "\n" +
+        "Date: " + this.date + "\n" +
+        "Author: " + this.author + "\n" +
+        "Source: " + this.source + "\n";
+    return newsString;
   }
 
   /**
