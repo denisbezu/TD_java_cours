@@ -1,8 +1,12 @@
 package com.denys.classes;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Represents the storage for news
@@ -74,6 +78,28 @@ public class BaseDeNews {
     ObjectInputStream oi = new ObjectInputStream(fi);
 
     this.news = (TreeSet<News>) oi.readObject();
+  }
+
+  public List<News> search(String searchString) {
+    List<News> findNews = new ArrayList<>();
+    Pattern pattern = Pattern.compile(searchString);
+
+    Iterator iterator = this.news.iterator();
+    while (iterator.hasNext()) {
+      News news = (News) iterator.next();
+      Matcher titleMatcher = pattern.matcher(news.getTitle());
+      if (titleMatcher.find()) {
+        findNews.add(news);
+        continue;
+      }
+
+      Matcher authorMatcher = pattern.matcher(news.getAuthor());
+      if (authorMatcher.find()) {
+        findNews.add(news);
+      }
+    }
+
+    return findNews;
   }
 
 }

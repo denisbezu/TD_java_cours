@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -314,6 +315,12 @@ public class MesNews {
   public static void search() {
     System.out.println("permet de recherche si une actualit´e existe en fonction du titre, ou mˆeme de\n" +
         "mots-clefs, entr´es par l’utilisateur");
+    Scanner scanner = new Scanner(System.in);
+    String searchString = scanner.nextLine();
+    List<News> searchResult = baseDeNews.search(searchString);
+    for (News news : searchResult) {
+      System.out.println(news.toString());
+    }
   }
 
   /**
