@@ -1,6 +1,7 @@
 package com.denys;
 
 import com.denys.classes.*;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -17,17 +18,19 @@ public class MesNews {
    */
   private static BaseDeNews baseDeNews;
 
+  private final static String baseDeNewsFileName = "news.txt";
+
   /**
    * The entry point of program
    *
    * @param args
    * @throws MalformedURLException
    */
-  public static void main(String[] args) throws MalformedURLException {
+  public static void main(String[] args) throws IOException, ClassNotFoundException {
 
     baseDeNews = new BaseDeNews();
-    baseDeNews.initialize();
-    baseDeNews.add(new News("Denys", LocalDate.parse("2019-02-02"), "Author", new URL("https://google.com")));
+    baseDeNews.initialize(); // to remove latter
+
     doActions();
   }
 
@@ -107,6 +110,13 @@ public class MesNews {
     System.out.println("charge une base d’actualit´e existante qui a " +
         "´et´e enregistr´ee pr´ealablement sur le disque\n" +
         "dur de l’ordinateur");
+    try {
+      baseDeNews.readFromFile(baseDeNewsFileName);
+    } catch (IOException e) {
+      System.out.println("Error while reading data from file");
+    } catch (ClassNotFoundException e) {
+      System.out.println("Casting class not found");
+    }
   }
 
   /**
@@ -114,6 +124,11 @@ public class MesNews {
    */
   public static void save() {
     System.out.println("sauvegarde la base courante sur le disque dur de l’ordinateur");
+    try {
+      baseDeNews.saveToFile(baseDeNewsFileName);
+    } catch (IOException e) {
+      System.out.println("Error while saving file!");
+    }
   }
 
   /**

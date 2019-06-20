@@ -89,7 +89,7 @@ public class Photo extends News {
     photoString += "Name of photo: " + this.photoName + "\n";
     photoString += "Extension: " + this.extension + "\n";
     photoString += "Resolution: (" + this.resolutionX + ", " + this.resolutionY + ")\n";
-    photoString += "Image type: " + (isColored ? "colored" : "black and white") + ")\n";
+    photoString += "Image type: " + (isColored ? "colored" : "black and white") + "\n";
     return photoString;
   }
 }

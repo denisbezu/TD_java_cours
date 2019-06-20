@@ -1,5 +1,6 @@
 package com.denys.classes;
 
+import java.io.*;
 import java.util.Iterator;
 import java.util.TreeSet;
 
@@ -59,6 +60,20 @@ public class BaseDeNews {
     }
 
     return false;
+  }
+
+  public void saveToFile(String fileName) throws IOException {
+    FileOutputStream f = new FileOutputStream(new File(fileName));
+    ObjectOutputStream o = new ObjectOutputStream(f);
+
+    o.writeObject(this.news);
+  }
+
+  public void readFromFile(String fileName) throws IOException, ClassNotFoundException {
+    FileInputStream fi = new FileInputStream(new File(fileName));
+    ObjectInputStream oi = new ObjectInputStream(fi);
+
+    this.news = (TreeSet<News>) oi.readObject();
   }
 
 }

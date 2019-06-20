@@ -1,11 +1,12 @@
 package com.denys.classes;
 
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class News implements Comparable {
+public abstract class News implements Comparable, Serializable {
 
   //region Fields
   /**
